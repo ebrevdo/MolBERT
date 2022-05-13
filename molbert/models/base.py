@@ -17,8 +17,8 @@ from transformers import (
     BertPreTrainedModel,
     BertModel,
 )
-from transformers.modeling_bert import BertEncoder, BertPooler
-from transformers.modeling_transfo_xl import PositionalEmbedding
+from transformers.models.bert.modeling_bert import BertEncoder, BertPooler
+from transformers.models.transfo_xl.modeling_transfo_xl import PositionalEmbedding
 
 from molbert.datasets.dataloading import MolbertDataLoader
 

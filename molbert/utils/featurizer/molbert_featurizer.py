@@ -110,13 +110,19 @@ class MolBertFeaturizer:
             )
 
         if self.output_all:
-            sequence_output, pooled_output, hidden = outputs
+            sequence_output = outputs[0]
+            pooled_output = outputs[1]
+            hidden = outputs[2]
         else:
-            sequence_output, pooled_output = outputs
+            sequence_output = outputs[0]
+            pooled_output = outputs[1]
 
         # set invalid outputs to 0s
         valid_tensor = torch.tensor(
-            valid, dtype=sequence_output.dtype, device=sequence_output.device, requires_grad=False
+            valid,
+            dtype=sequence_output.dtype,
+            device=sequence_output.device,
+            requires_grad=False
         )
 
         pooled_output = pooled_output * valid_tensor[:, None]
